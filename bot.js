@@ -6,6 +6,8 @@ const path = require('path')
 
 const bot = new Telegraf(process.env.TOKEN)
 
+/* Dynamically load all handler files from the 'functions' directory */
+
 function loadHandlers(dir){
     fs.readdirSync(dir).forEach((file) => {
         const fullPath = path.join(dir, file);
@@ -23,8 +25,6 @@ function loadHandlers(dir){
 loadHandlers(path.join(__dirname, 'functions'));
 bot.launch()
 
-
-bot.start((ctx) => ctx.reply('Welcome'))
 bot.help((ctx) => ctx.reply('Send me a sticker'))
 bot.on(message('sticker'), (ctx) => ctx.reply('👍'))
 bot.hears('hi', (ctx) => ctx.reply('Hey there'))
