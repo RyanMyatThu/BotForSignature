@@ -25,9 +25,7 @@ function loadHandlers(dir){
 loadHandlers(path.join(__dirname, 'functions'));
 bot.launch()
 
-bot.help((ctx) => ctx.reply('Send me a sticker'))
-bot.on(message('sticker'), (ctx) => ctx.reply('👍'))
-bot.hears('hi', (ctx) => ctx.reply('Hey there'))
+
 
 process.once('SIGINT', () => bot.stop('SIGINT'))
 process.once('SIGTERM', () => bot.stop('SIGTERM'))
